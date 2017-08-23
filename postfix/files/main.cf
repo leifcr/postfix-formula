@@ -7,10 +7,7 @@
   {%- if value is number or value is string -%}
 {{ parameter }} = {{ value }}
   {%- elif value is iterable -%}
-{{ parameter }} =
-    {%- for v in value %}
-       {{ v }},
-    {%- endfor %}
+{{ parameter }} = {{ value | join(', ')}}
   {%- endif -%}
 {%- do processed_parameters.append(parameter) %}
 {%- endif %}
